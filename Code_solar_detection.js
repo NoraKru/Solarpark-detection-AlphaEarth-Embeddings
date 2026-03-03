@@ -30,6 +30,19 @@ var mosaic = embeddings
 var scale = 40;
 var bandNames = mosaic.bandNames();
 
+print('Meine Punkte:', samples);
+print('Meine Punkte:', samples2);
+//Collect manually Samples or use his ones:
+var samples = ee.FeatureCollection([
+  ee.Feature(ee.Geometry.Point([10.225648451251415, 50.20718751183858]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([10.246176770816842, 50.18304016601851]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([9.587343982597382, 49.80449869879423]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([9.472013452981072, 49.79543644158819]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([9.700636644008588, 49.98457642834476]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([10.26876125605955, 49.98391150216355]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([10.464678812041903, 50.00310642912673]), {label: 'Solar'})
+]);
+
 // Extract embedding vectors from reference samples (Ensure 'samples' is defined in Imports)
 var sampleEmbeddings = mosaic.sampleRegions({
   collection: samples,
@@ -83,6 +96,17 @@ var aoiMittelfranken = ee.FeatureCollection('FAO/GAUL_SIMPLIFIED_500m/2015/level
   
 var geomMittel = aoiMittelfranken.geometry();
 Map.addLayer(geomMittel, {color: 'blue'}, 'Search Area: Middle Franconia');
+
+//Collect manually Samples or use his ones:
+var samples2 = ee.FeatureCollection([
+  ee.Feature(ee.Geometry.Point([10.629908103838414, 49.5563348428216]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([10.841882379463014, 49.44796309912538]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([10.446097342245592, 49.302553569379214]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([10.934322472477369, 49.221142836120684]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([10.564490798009455, 49.182841769168206]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([10.801672189671061, 49.04466837255123]), {label: 'Solar'}),
+  ee.Feature(ee.Geometry.Point([10.848463447997542, 49.06639632189382]), {label: 'Solar'})
+]);
 
 // 2.2 Similarity Search (using 'samples2')
 var sampleEmbeddings2 = mosaic.sampleRegions({
