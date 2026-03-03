@@ -25,7 +25,7 @@ var sampleDistances = ee.ImageCollection(sampleEmbeddings.map(function(f) {
 }));
 ```
 
-Mathematically, this represents the Dot Product (Scalar Product) between a reference vector u (from our samples) and every target pixel vector v in the region of interest:
+Mathematically, this represents the Dot Product between a reference vector $u$ (from our samples) and every target pixel vector $v$ in the region of interest:
 
 
 $`Similiarity= u*v=\sum_{i=64}^n   u_i*v_i`$
@@ -33,11 +33,11 @@ $`Similiarity= u*v=\sum_{i=64}^n   u_i*v_i`$
 
 The initial similarity analysis often resulted in fragmented polygons, especially within larger solar parks where rows of panels are separated by grass or paths. To transform these raw detections into meaningful "objects," the following spatial refinement was implemented:
 
-Buffering: All detected polygons were buffered by 500 meters.
+**Buffering**: All detected polygons were buffered by 500 meters.
 
-Dissolving (Union): Overlapping buffers were merged to ensure that fragmented parts of the same facility are treated as a single entity.
+**Union**: Overlapping buffers were merged to ensure that fragmented parts of the same facility are treated as a single entity.
 
-Centroid Extraction: Finally, the geometric centers (centroids) were calculated for each cluster.
+**Centroid Extraction**: Finally, the geometric centers (centroids) were calculated for each cluster.
 
 The end result is a streamlined point dataset representing the locations of detected solar energy sites. For validation, Ground Truth Data was obtained from the Energieatlas Bayern and integrated into a GIS environment for spatial comparison.
 
