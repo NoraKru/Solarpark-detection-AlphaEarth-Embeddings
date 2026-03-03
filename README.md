@@ -11,15 +11,19 @@ This project was driven by curiosity:
 **1. Vector Extraction & Scaling**
 
 The process begins by extracting the spectral-spatial signatures of our training samples:
+
 ```var sampleEmbeddings = mosaic.sampleRegions({ collection: samples, scale: scale });```
 
-2. Iterative Similarity Projection
+**2. Iterative Similarity Projection**
 
 The script iterates over each training sample, projecting its unique 64-dimensional signature onto the entire study area. This is achieved through the following logic:
-```var sampleDistances = ee.ImageCollection(sampleEmbeddings.map(function(f) {
+
+```
+var sampleDistances = ee.ImageCollection(sampleEmbeddings.map(function(f) {
   var arrayImage = ee.Image(f.toArray(bandNames)).arrayFlatten([bandNames]);
   return arrayImage.multiply(mosaic).reduce('sum').rename('similarity');
-}));```
+}));
+```
 
 Mathematically, this represents the Dot Product (Scalar Product) between a reference vector u (from our samples) and every target pixel vector v in the region of interest:
 
