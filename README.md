@@ -1,7 +1,7 @@
 # Solarpark-detection-AlphaEarth-Embeddings
-Solar panel detection in Lower and Middle Franconia using Google Earth Engine and Satellite Embeddings
+Solar park detection in Lower and Middle Franconia using Google Earth Engine and Satellite Embeddings
 
-In 2025, the Alpha Earth Foundation released a new AI-driven model for Earth observation. By projecting vast amounts of multi-source data into a 64-dimensional vector space (embeddings), this model opens up new dimensions for analyzing the Earth's surface. However, there are inherent limitations: the data is currently aggregated on an annual basis within Google Earth Engine, meaning short-term events like floods cannot be detected. Furthermore, the spatial coverage is not yet global; for instance, offshore wind farms in the North Sea are not yet included.
+In 2025, the Alpha Earth Foundation released a new AI-driven model for Earth observation. By projecting vast amounts of multi-source data into a 64-dimensional vector space (embeddings), this model opens up new dimensions for analyzing the Earth's surface. However, there are limitations: the data is aggregated on an annual basis within Google Earth Engine, meaning short-term events like floods cannot be detected. Furthermore, the spatial coverage is not yet global; for instance, offshore wind farms in the North Sea are not yet included.
 
 This project was driven by curiosity: 
 **How effective are these AI embeddings for detecting solar photovoltaic (PV) parks in Lower and Middle Franconia using a Similarity Analysis approach?**
@@ -10,7 +10,7 @@ This project was driven by curiosity:
 
 **1. Vector Extraction & Scaling**
 
-The process begins by extracting the spectral-spatial signatures of our training samples:
+Once the Area of Interest (AOI) is defined and the representative samples of solar parks are collected, the process begins by extracting the spectral-spatial signatures of these training points.
 
 ```var sampleEmbeddings = mosaic.sampleRegions({ collection: samples, scale: scale });```
 
@@ -29,7 +29,11 @@ Mathematically, this represents the Dot Product between a reference vector $u$ (
 
 
 $`Similiarity= u*v=\sum_{i=64}^n   u_i*v_i`$
-​
+
+
+Threshold!!!!!!
+
+**Spatial Post-Processing: From Pixel Clusters to Objects**​
 
 The initial similarity analysis often resulted in fragmented polygons, especially within larger solar parks where rows of panels are separated by grass or paths. To transform these raw detections into meaningful "objects," the following spatial refinement was implemented:
 
