@@ -23,7 +23,7 @@ The script iterates over each training sample, projecting its unique 64-dimensio
 Mathematically, this represents the Dot Product (Scalar Product) between a reference vector u (from our samples) and every target pixel vector v in the region of interest:
 
 
-$\similiarity= u*v=\sum_{i=64}^n u_i*v_i)$
+$`\similiarity= u*v=\sum_{i=64}^n u_i*v_i)`$
 ​
 
 The initial similarity analysis often resulted in fragmented polygons, especially within larger solar parks where rows of panels are separated by grass or paths. To transform these raw detections into meaningful "objects," the following spatial refinement was implemented:
