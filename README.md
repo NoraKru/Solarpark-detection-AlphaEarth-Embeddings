@@ -26,4 +26,4 @@ Quick Start: Copy the code into the GEE Editor and click Run.
 
 Custom Samples: If you wish to use your own training data, simply comment out or delete the samples definition block and create your own FeatureCollection of points.
 
-<small>This workflow can be adapted to detect other objects (e.g., industrial sites or specific agricultural patterns) by simply changing the input samples and the region of interest.<small>
+*This workflow can be adapted to detect other objects (e.g., industrial sites or specific agricultural patterns) by simply changing the input samples and the region of interest.<small>*
